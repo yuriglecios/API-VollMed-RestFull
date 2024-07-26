@@ -1,6 +1,6 @@
 package com.api.med.medico;
 
-import com.api.med.endereco.EnderecoDto;
+import com.api.med.endereco.DadosEnderecoDto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -22,6 +22,6 @@ public record DadosCadastroMedicoDTO(
         Especialidade especialidade,
         @NotNull
         @Valid
-        EnderecoDto endereco
+        DadosEnderecoDto endereco
 ) {
 }

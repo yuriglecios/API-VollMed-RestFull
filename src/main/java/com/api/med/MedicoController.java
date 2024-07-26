@@ -1,15 +1,17 @@
 package com.api.med;
 
 import com.api.med.medico.DadosCadastroMedicoDTO;
+import com.api.med.medico.DadosRetornoMedicoDto;
 import com.api.med.medico.Medico;
 import com.api.med.medico.MedicoRepository;
-import com.api.med.paciente.DadosCadastroPacienteDTO;
 import jakarta.validation.Valid;
-import org.springframework.stereotype.Controller;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/cadastro")
+@RequestMapping("/cadastroMedico")
 public class MedicoController {
 
     private final MedicoRepository medicoRepository;
@@ -19,13 +21,14 @@ public class MedicoController {
     }
 
     @PostMapping("/medico")
+    @Transactional
     public void cadastrarMedico(@RequestBody @Valid DadosCadastroMedicoDTO dadosMedico){
         medicoRepository.save(new Medico(dadosMedico));
     }
 
-    @PostMapping("/paciente")
-    public void cadastrarPaciente(@RequestBody DadosCadastroPacienteDTO dadosPaciente){
-        System.out.println(dadosPaciente);
+    @GetMapping("listarMedicos")
+    public Page<DadosRetornoMedicoDto> listarMedicos(Pageable pageable){
+        return medicoRepository.findAll(pageable).map(DadosRetornoMedicoDto::new);
     }
 
 }

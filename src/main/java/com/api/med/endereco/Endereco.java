@@ -18,7 +18,7 @@ public class Endereco {
     private String uf;
     private String cep;
 
-    public Endereco(EnderecoDto endereco) {
+    public Endereco(DadosEnderecoDto endereco) {
         this.logradouro = endereco.logradouro();
         this.numero = endereco.numero();
         this.complemento = endereco.complemento();
