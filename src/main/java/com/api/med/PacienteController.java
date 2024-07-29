@@ -1,9 +1,6 @@
 package com.api.med;
 
-import com.api.med.paciente.DadosCadastroPacienteDTO;
-import com.api.med.paciente.DadosPacienteRetornoDto;
-import com.api.med.paciente.Paciente;
-import com.api.med.paciente.PacienteRepository;
+import com.api.med.paciente.*;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,5 +25,18 @@ public class PacienteController {
     @GetMapping("listarPaciente")
     public Page<DadosPacienteRetornoDto> listarPaciente(Pageable pageable){
         return pacienteRepository.findAll(pageable).map(DadosPacienteRetornoDto::new);
+    }
+
+    @PutMapping("/atualizarPaciente")
+    @Transactional
+    public void atualizarPaciente(@RequestBody @Valid DadosAtualizacaoPacienteDTO dadosAtualizacaoPacienteDTO){
+        var paciente = pacienteRepository.getReferenceById(dadosAtualizacaoPacienteDTO.id());
+        paciente.atualizarPaciente(dadosAtualizacaoPacienteDTO);
+    }
+
+    @DeleteMapping("/excluirPaciente/{id}")
+    @Transactional
+    public void excluirPaciente(@PathVariable Long id){
+        pacienteRepository.deleteById(id);
     }
 }
