@@ -20,8 +20,10 @@ public class Paciente {
     private String telefone;
     @Embedded
     private Endereco endereco;
+    private boolean ativo;
 
     public Paciente(DadosCadastroPacienteDTO dadosPaciente) {
+        this.ativo = true;
         this.nome = dadosPaciente.nome();
         this.email = dadosPaciente.email();
         this.cpf = dadosPaciente.cpf();
