@@ -4,6 +4,7 @@ import com.api.med.paciente.*;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,14 +37,16 @@ public class PacienteController {
 
     @DeleteMapping("/excluirPaciente/{id}")
     @Transactional
-    public void excluirPaciente(@PathVariable Long id){
+    public ResponseEntity<Paciente> excluirPaciente(@PathVariable Long id){
         pacienteRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/inativarPaciente/{id}")
     @Transactional
-    public void inativarPaciente(@PathVariable Long id){
+    public ResponseEntity<Paciente> inativarPaciente(@PathVariable Long id){
         var paciente = pacienteRepository.getReferenceById(id);
         paciente.setAtivo(false);
+        return ResponseEntity.noContent().build();
     }
 }
