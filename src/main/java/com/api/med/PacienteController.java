@@ -55,4 +55,10 @@ public class PacienteController {
         paciente.setAtivo(false);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DadosDetalhamentoPaciente> detalharPaciente(@PathVariable Long id){
+        var paciente = pacienteRepository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosDetalhamentoPaciente(paciente));
+    }
 }
