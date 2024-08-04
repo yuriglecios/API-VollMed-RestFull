@@ -9,4 +9,8 @@ public record DadosPacienteRetornoDto(
     public DadosPacienteRetornoDto(Paciente paciente){
         this(paciente.getId(), paciente.getNome(), paciente.getEmail(), paciente.getCpf());
     }
+
+    public DadosPacienteRetornoDto(DadosPacienteRetornoDto dadosPacienteRetornoDto) {
+        this(dadosPacienteRetornoDto.id(), dadosPacienteRetornoDto.nome(), dadosPacienteRetornoDto.email(), dadosPacienteRetornoDto.cpf());
+    }
 }

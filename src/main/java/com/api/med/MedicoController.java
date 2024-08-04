@@ -1,7 +1,7 @@
 package com.api.med;
 
 import com.api.med.medico.*;
-import com.api.med.paciente.DadosAtualizacaoMedicoDTO;
+import com.api.med.medico.DadosAtualizacaoMedicoDTO;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

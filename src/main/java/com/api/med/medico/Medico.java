@@ -1,7 +1,6 @@
 package com.api.med.medico;
 
 import com.api.med.endereco.Endereco;
-import com.api.med.paciente.DadosAtualizacaoMedicoDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

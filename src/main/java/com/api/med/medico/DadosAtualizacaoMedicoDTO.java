@@ -1,4 +1,4 @@
-package com.api.med.paciente;
+package com.api.med.medico;
 
 import com.api.med.endereco.DadosEnderecoDto;
 
